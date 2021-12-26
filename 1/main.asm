@@ -86,6 +86,6 @@ second:		xor.b #0x40, P1OUT
 ;-------------------------------------------------------------------------------
             .sect   ".reset"                	; MSP430 RESET Vector
             .short  RESET
-            .sect	".int02"		; pragma
-            .short	P1_ISR
+            .sect   ".int02"			; pragma
+            .short  P1_ISR
             
