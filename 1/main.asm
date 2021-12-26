@@ -29,13 +29,13 @@ init:		bis.b #0x8f, P1DIR
 
 init_int:	bic.b #0x10, P1DIR
 		bis.b #0x10, P1REN
-		bis.b #0x10, P1IES 	;sellecting the falling edge
+		bis.b #0x10, P1IES		;sellecting the falling edge
 		bic.b #0x10, P1IFG
 		bis.b #0x10, P1IE
 		eint 				;enable interrut -> bis.w #GIE, SR
 
 main:		bis.b #0x03, P1OUT
-		call #delay 		; call a delay
+		call #delay 			; call a delay
 		bic.b #0x03, P1OUT
 		call #delay
 
@@ -60,9 +60,9 @@ delay:		dec.w R5			;bis.w #LPM1, SR
 
 
 P1_ISR:     	inc.w R6
-		cmp.w #0x0001, R6 	;compare: R6 - 0x0001 = 0
+		cmp.w #0x0001, R6 		;compare: R6 - 0x0001 = 0
 		jz first
-		cmp.w #0x0002, R6 	;compare: R6 - 0x0002 = 0
+		cmp.w #0x0002, R6 		;compare: R6 - 0x0002 = 0
 		jz second
 		mov.w #0x0000, R6
 		bic.b #0x10, P1IFG
@@ -84,8 +84,8 @@ second:		xor.b #0x40, P1OUT
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"                ; MSP430 RESET Vector
+            .sect   ".reset"                	; MSP430 RESET Vector
             .short  RESET
-            .sect	".int02"				; pragma
+            .sect	".int02"		; pragma
             .short	P1_ISR
             
