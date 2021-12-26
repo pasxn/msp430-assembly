@@ -28,8 +28,8 @@ StopWDT     mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 ; CLK  -> 0x02
 ; DATA -> 0x04
 
-init:		bis.w #110011001b, R5		; data
-		bis.w #100000000b, R6		; bit no.
+init:		bis.w #110011001b, R5			; data
+		bis.w #100000000b, R6			; bit no.
 		bis.w #0x0a, R7				; i
 
 		bis.b #0x07, P1DIR
@@ -78,6 +78,6 @@ end:		bis.b #0x01, P1OUT			; CS -> HIGH
 ;-------------------------------------------------------------------------------
 ; Interrupt Vectors
 ;-------------------------------------------------------------------------------
-            .sect   ".reset"                ; MSP430 RESET Vector
+            .sect   ".reset"                		; MSP430 RESET Vector
             .short  RESET
             
